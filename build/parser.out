@@ -1,0 +1,2965 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    NOT
+    SEMICOLON
+
+Grammar
+
+Rule 0     S' -> statements
+Rule 1     statements -> statement
+Rule 2     statements -> statements statement
+Rule 3     if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+Rule 4     bin_operators -> PLUS
+Rule 5     bin_operators -> MINUS
+Rule 6     bin_operators -> TIMES
+Rule 7     bin_operators -> DIVIDE
+Rule 8     bin_operators -> MOD
+Rule 9     bin_operators -> EQEQ
+Rule 10    bin_operators -> NOT_EQUAL
+Rule 11    bin_operators -> LESS
+Rule 12    bin_operators -> LESS_EQUAL
+Rule 13    bin_operators -> GREATER
+Rule 14    bin_operators -> GREATER_EQUAL
+Rule 15    bin_operators -> AND
+Rule 16    bin_operators -> OR
+Rule 17    for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+Rule 18    empty -> <empty>
+Rule 19    elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE
+Rule 20    elifs -> empty
+Rule 21    for_sequence -> IDENTIFIER
+Rule 22    for_sequence -> collections
+Rule 23    for_sequence -> INT DOT DOT INT
+Rule 24    statement -> data_declaration
+Rule 25    statement -> expression
+Rule 26    statement -> if_statement
+Rule 27    statement -> for_statement
+Rule 28    statement -> while_statement
+Rule 29    else_statement -> ELSE LBRACE statements RBRACE
+Rule 30    else_statement -> empty
+Rule 31    data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression
+Rule 32    data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression
+Rule 33    data_declaration -> IDENTIFIER EQUAL expression
+Rule 34    while_block -> WHILE LPAREN expression RPAREN
+Rule 35    basic_typehints -> INT_TYPE
+Rule 36    basic_typehints -> FLOAT_TYPE
+Rule 37    basic_typehints -> BOOL_TYPE
+Rule 38    basic_typehints -> STRING_TYPE
+Rule 39    basic_typehints -> SET_TYPE
+Rule 40    while_statement -> while_block LBRACE statements RBRACE
+Rule 41    while_statement -> REPEAT LBRACE statements RBRACE while_block
+Rule 42    typehint -> LBRACKET basic_typehints RBRACKET
+Rule 43    typehint -> LBRACKET basic_typehints COLON basic_typehints RBRACKET
+Rule 44    typehint -> basic_typehints
+Rule 45    expression -> IDENTIFIER
+Rule 46    expression -> basic_types
+Rule 47    expression -> comparison_expression
+Rule 48    comparison_expression -> expression bin_operators expression
+Rule 49    basic_types -> INT
+Rule 50    basic_types -> FLOAT
+Rule 51    basic_types -> BOOL
+Rule 52    basic_types -> STRING
+Rule 53    basic_types -> collections
+Rule 54    collections -> LBRACKET collection_contents RBRACKET
+Rule 55    collections -> LPAREN collection_contents RPAREN
+Rule 56    collection_contents -> collection_content
+Rule 57    collection_contents -> collection_content COMMA collection_contents
+Rule 58    collection_content -> basic_types
+Rule 59    collection_content -> basic_types COLON basic_types
+
+Terminals, with rules where they appear
+
+AND                  : 15
+BOOL                 : 51
+BOOL_TYPE            : 37
+COLON                : 31 32 43 59
+COMMA                : 57
+DIVIDE               : 7
+DOT                  : 23 23
+ELIF                 : 19
+ELSE                 : 29
+EQEQ                 : 9
+EQUAL                : 31 32 33
+FLOAT                : 50
+FLOAT_TYPE           : 36
+FOR                  : 17
+GREATER              : 13
+GREATER_EQUAL        : 14
+IDENTIFIER           : 17 21 31 32 33 45
+IF                   : 3
+IN                   : 17
+INT                  : 23 23 49
+INT_TYPE             : 35
+LBRACE               : 3 17 19 29 40 41
+LBRACKET             : 42 43 54
+LESS                 : 11
+LESS_EQUAL           : 12
+LET                  : 31
+LPAREN               : 3 19 34 55
+MINUS                : 5
+MOD                  : 8
+NOT                  : 
+NOT_EQUAL            : 10
+OR                   : 16
+PLUS                 : 4
+RBRACE               : 3 17 19 29 40 41
+RBRACKET             : 42 43 54
+REPEAT               : 41
+RPAREN               : 3 19 34 55
+SEMICOLON            : 
+SET_TYPE             : 39
+STRING               : 52
+STRING_TYPE          : 38
+TIMES                : 6
+VAR                  : 32
+WHILE                : 34
+error                : 
+
+Nonterminals, with rules where they appear
+
+basic_typehints      : 42 43 43 44
+basic_types          : 46 58 59 59
+bin_operators        : 48
+collection_content   : 56 57
+collection_contents  : 54 55 57
+collections          : 22 53
+comparison_expression : 47
+data_declaration     : 24
+elifs                : 3 19
+else_statement       : 3
+empty                : 20 30
+expression           : 3 19 25 31 32 33 34 48 48
+for_sequence         : 17
+for_statement        : 27
+if_statement         : 26
+statement            : 1 2
+statements           : 2 3 17 19 29 40 41 0
+typehint             : 31 32
+while_block          : 40 41
+while_statement      : 28
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statements
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statements                     shift and go to state 1
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 1
+
+    (0) S' -> statements .
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 2
+
+    (1) statements -> statement .
+
+    LET             reduce using rule 1 (statements -> statement .)
+    VAR             reduce using rule 1 (statements -> statement .)
+    IDENTIFIER      reduce using rule 1 (statements -> statement .)
+    IF              reduce using rule 1 (statements -> statement .)
+    FOR             reduce using rule 1 (statements -> statement .)
+    REPEAT          reduce using rule 1 (statements -> statement .)
+    INT             reduce using rule 1 (statements -> statement .)
+    FLOAT           reduce using rule 1 (statements -> statement .)
+    BOOL            reduce using rule 1 (statements -> statement .)
+    STRING          reduce using rule 1 (statements -> statement .)
+    WHILE           reduce using rule 1 (statements -> statement .)
+    LBRACKET        reduce using rule 1 (statements -> statement .)
+    LPAREN          reduce using rule 1 (statements -> statement .)
+    $end            reduce using rule 1 (statements -> statement .)
+    RBRACE          reduce using rule 1 (statements -> statement .)
+
+
+state 3
+
+    (24) statement -> data_declaration .
+
+    LET             reduce using rule 24 (statement -> data_declaration .)
+    VAR             reduce using rule 24 (statement -> data_declaration .)
+    IDENTIFIER      reduce using rule 24 (statement -> data_declaration .)
+    IF              reduce using rule 24 (statement -> data_declaration .)
+    FOR             reduce using rule 24 (statement -> data_declaration .)
+    REPEAT          reduce using rule 24 (statement -> data_declaration .)
+    INT             reduce using rule 24 (statement -> data_declaration .)
+    FLOAT           reduce using rule 24 (statement -> data_declaration .)
+    BOOL            reduce using rule 24 (statement -> data_declaration .)
+    STRING          reduce using rule 24 (statement -> data_declaration .)
+    WHILE           reduce using rule 24 (statement -> data_declaration .)
+    LBRACKET        reduce using rule 24 (statement -> data_declaration .)
+    LPAREN          reduce using rule 24 (statement -> data_declaration .)
+    $end            reduce using rule 24 (statement -> data_declaration .)
+    RBRACE          reduce using rule 24 (statement -> data_declaration .)
+
+
+state 4
+
+    (25) statement -> expression .
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    LET             reduce using rule 25 (statement -> expression .)
+    VAR             reduce using rule 25 (statement -> expression .)
+    IDENTIFIER      reduce using rule 25 (statement -> expression .)
+    IF              reduce using rule 25 (statement -> expression .)
+    FOR             reduce using rule 25 (statement -> expression .)
+    REPEAT          reduce using rule 25 (statement -> expression .)
+    INT             reduce using rule 25 (statement -> expression .)
+    FLOAT           reduce using rule 25 (statement -> expression .)
+    BOOL            reduce using rule 25 (statement -> expression .)
+    STRING          reduce using rule 25 (statement -> expression .)
+    WHILE           reduce using rule 25 (statement -> expression .)
+    LBRACKET        reduce using rule 25 (statement -> expression .)
+    LPAREN          reduce using rule 25 (statement -> expression .)
+    $end            reduce using rule 25 (statement -> expression .)
+    RBRACE          reduce using rule 25 (statement -> expression .)
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 5
+
+    (26) statement -> if_statement .
+
+    LET             reduce using rule 26 (statement -> if_statement .)
+    VAR             reduce using rule 26 (statement -> if_statement .)
+    IDENTIFIER      reduce using rule 26 (statement -> if_statement .)
+    IF              reduce using rule 26 (statement -> if_statement .)
+    FOR             reduce using rule 26 (statement -> if_statement .)
+    REPEAT          reduce using rule 26 (statement -> if_statement .)
+    INT             reduce using rule 26 (statement -> if_statement .)
+    FLOAT           reduce using rule 26 (statement -> if_statement .)
+    BOOL            reduce using rule 26 (statement -> if_statement .)
+    STRING          reduce using rule 26 (statement -> if_statement .)
+    WHILE           reduce using rule 26 (statement -> if_statement .)
+    LBRACKET        reduce using rule 26 (statement -> if_statement .)
+    LPAREN          reduce using rule 26 (statement -> if_statement .)
+    $end            reduce using rule 26 (statement -> if_statement .)
+    RBRACE          reduce using rule 26 (statement -> if_statement .)
+
+
+state 6
+
+    (27) statement -> for_statement .
+
+    LET             reduce using rule 27 (statement -> for_statement .)
+    VAR             reduce using rule 27 (statement -> for_statement .)
+    IDENTIFIER      reduce using rule 27 (statement -> for_statement .)
+    IF              reduce using rule 27 (statement -> for_statement .)
+    FOR             reduce using rule 27 (statement -> for_statement .)
+    REPEAT          reduce using rule 27 (statement -> for_statement .)
+    INT             reduce using rule 27 (statement -> for_statement .)
+    FLOAT           reduce using rule 27 (statement -> for_statement .)
+    BOOL            reduce using rule 27 (statement -> for_statement .)
+    STRING          reduce using rule 27 (statement -> for_statement .)
+    WHILE           reduce using rule 27 (statement -> for_statement .)
+    LBRACKET        reduce using rule 27 (statement -> for_statement .)
+    LPAREN          reduce using rule 27 (statement -> for_statement .)
+    $end            reduce using rule 27 (statement -> for_statement .)
+    RBRACE          reduce using rule 27 (statement -> for_statement .)
+
+
+state 7
+
+    (28) statement -> while_statement .
+
+    LET             reduce using rule 28 (statement -> while_statement .)
+    VAR             reduce using rule 28 (statement -> while_statement .)
+    IDENTIFIER      reduce using rule 28 (statement -> while_statement .)
+    IF              reduce using rule 28 (statement -> while_statement .)
+    FOR             reduce using rule 28 (statement -> while_statement .)
+    REPEAT          reduce using rule 28 (statement -> while_statement .)
+    INT             reduce using rule 28 (statement -> while_statement .)
+    FLOAT           reduce using rule 28 (statement -> while_statement .)
+    BOOL            reduce using rule 28 (statement -> while_statement .)
+    STRING          reduce using rule 28 (statement -> while_statement .)
+    WHILE           reduce using rule 28 (statement -> while_statement .)
+    LBRACKET        reduce using rule 28 (statement -> while_statement .)
+    LPAREN          reduce using rule 28 (statement -> while_statement .)
+    $end            reduce using rule 28 (statement -> while_statement .)
+    RBRACE          reduce using rule 28 (statement -> while_statement .)
+
+
+state 8
+
+    (31) data_declaration -> LET . IDENTIFIER COLON typehint EQUAL expression
+
+    IDENTIFIER      shift and go to state 40
+
+
+state 9
+
+    (33) data_declaration -> IDENTIFIER . EQUAL expression
+    (45) expression -> IDENTIFIER .
+
+    EQUAL           shift and go to state 41
+    PLUS            reduce using rule 45 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 45 (expression -> IDENTIFIER .)
+    TIMES           reduce using rule 45 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 45 (expression -> IDENTIFIER .)
+    MOD             reduce using rule 45 (expression -> IDENTIFIER .)
+    EQEQ            reduce using rule 45 (expression -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 45 (expression -> IDENTIFIER .)
+    LESS            reduce using rule 45 (expression -> IDENTIFIER .)
+    LESS_EQUAL      reduce using rule 45 (expression -> IDENTIFIER .)
+    GREATER         reduce using rule 45 (expression -> IDENTIFIER .)
+    GREATER_EQUAL   reduce using rule 45 (expression -> IDENTIFIER .)
+    AND             reduce using rule 45 (expression -> IDENTIFIER .)
+    OR              reduce using rule 45 (expression -> IDENTIFIER .)
+    LET             reduce using rule 45 (expression -> IDENTIFIER .)
+    VAR             reduce using rule 45 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 45 (expression -> IDENTIFIER .)
+    IF              reduce using rule 45 (expression -> IDENTIFIER .)
+    FOR             reduce using rule 45 (expression -> IDENTIFIER .)
+    REPEAT          reduce using rule 45 (expression -> IDENTIFIER .)
+    INT             reduce using rule 45 (expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 45 (expression -> IDENTIFIER .)
+    BOOL            reduce using rule 45 (expression -> IDENTIFIER .)
+    STRING          reduce using rule 45 (expression -> IDENTIFIER .)
+    WHILE           reduce using rule 45 (expression -> IDENTIFIER .)
+    LBRACKET        reduce using rule 45 (expression -> IDENTIFIER .)
+    LPAREN          reduce using rule 45 (expression -> IDENTIFIER .)
+    $end            reduce using rule 45 (expression -> IDENTIFIER .)
+    RBRACE          reduce using rule 45 (expression -> IDENTIFIER .)
+
+
+state 10
+
+    (32) data_declaration -> VAR . IDENTIFIER COLON typehint EQUAL expression
+
+    IDENTIFIER      shift and go to state 42
+
+
+state 11
+
+    (46) expression -> basic_types .
+
+    PLUS            reduce using rule 46 (expression -> basic_types .)
+    MINUS           reduce using rule 46 (expression -> basic_types .)
+    TIMES           reduce using rule 46 (expression -> basic_types .)
+    DIVIDE          reduce using rule 46 (expression -> basic_types .)
+    MOD             reduce using rule 46 (expression -> basic_types .)
+    EQEQ            reduce using rule 46 (expression -> basic_types .)
+    NOT_EQUAL       reduce using rule 46 (expression -> basic_types .)
+    LESS            reduce using rule 46 (expression -> basic_types .)
+    LESS_EQUAL      reduce using rule 46 (expression -> basic_types .)
+    GREATER         reduce using rule 46 (expression -> basic_types .)
+    GREATER_EQUAL   reduce using rule 46 (expression -> basic_types .)
+    AND             reduce using rule 46 (expression -> basic_types .)
+    OR              reduce using rule 46 (expression -> basic_types .)
+    LET             reduce using rule 46 (expression -> basic_types .)
+    VAR             reduce using rule 46 (expression -> basic_types .)
+    IDENTIFIER      reduce using rule 46 (expression -> basic_types .)
+    IF              reduce using rule 46 (expression -> basic_types .)
+    FOR             reduce using rule 46 (expression -> basic_types .)
+    REPEAT          reduce using rule 46 (expression -> basic_types .)
+    INT             reduce using rule 46 (expression -> basic_types .)
+    FLOAT           reduce using rule 46 (expression -> basic_types .)
+    BOOL            reduce using rule 46 (expression -> basic_types .)
+    STRING          reduce using rule 46 (expression -> basic_types .)
+    WHILE           reduce using rule 46 (expression -> basic_types .)
+    LBRACKET        reduce using rule 46 (expression -> basic_types .)
+    LPAREN          reduce using rule 46 (expression -> basic_types .)
+    $end            reduce using rule 46 (expression -> basic_types .)
+    RBRACE          reduce using rule 46 (expression -> basic_types .)
+    RPAREN          reduce using rule 46 (expression -> basic_types .)
+
+
+state 12
+
+    (47) expression -> comparison_expression .
+
+    PLUS            reduce using rule 47 (expression -> comparison_expression .)
+    MINUS           reduce using rule 47 (expression -> comparison_expression .)
+    TIMES           reduce using rule 47 (expression -> comparison_expression .)
+    DIVIDE          reduce using rule 47 (expression -> comparison_expression .)
+    MOD             reduce using rule 47 (expression -> comparison_expression .)
+    EQEQ            reduce using rule 47 (expression -> comparison_expression .)
+    NOT_EQUAL       reduce using rule 47 (expression -> comparison_expression .)
+    LESS            reduce using rule 47 (expression -> comparison_expression .)
+    LESS_EQUAL      reduce using rule 47 (expression -> comparison_expression .)
+    GREATER         reduce using rule 47 (expression -> comparison_expression .)
+    GREATER_EQUAL   reduce using rule 47 (expression -> comparison_expression .)
+    AND             reduce using rule 47 (expression -> comparison_expression .)
+    OR              reduce using rule 47 (expression -> comparison_expression .)
+    LET             reduce using rule 47 (expression -> comparison_expression .)
+    VAR             reduce using rule 47 (expression -> comparison_expression .)
+    IDENTIFIER      reduce using rule 47 (expression -> comparison_expression .)
+    IF              reduce using rule 47 (expression -> comparison_expression .)
+    FOR             reduce using rule 47 (expression -> comparison_expression .)
+    REPEAT          reduce using rule 47 (expression -> comparison_expression .)
+    INT             reduce using rule 47 (expression -> comparison_expression .)
+    FLOAT           reduce using rule 47 (expression -> comparison_expression .)
+    BOOL            reduce using rule 47 (expression -> comparison_expression .)
+    STRING          reduce using rule 47 (expression -> comparison_expression .)
+    WHILE           reduce using rule 47 (expression -> comparison_expression .)
+    LBRACKET        reduce using rule 47 (expression -> comparison_expression .)
+    LPAREN          reduce using rule 47 (expression -> comparison_expression .)
+    $end            reduce using rule 47 (expression -> comparison_expression .)
+    RBRACE          reduce using rule 47 (expression -> comparison_expression .)
+    RPAREN          reduce using rule 47 (expression -> comparison_expression .)
+
+
+state 13
+
+    (3) if_statement -> IF . LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+
+    LPAREN          shift and go to state 43
+
+
+state 14
+
+    (55) collections -> LPAREN . collection_contents RPAREN
+    (56) collection_contents -> . collection_content
+    (57) collection_contents -> . collection_content COMMA collection_contents
+    (58) collection_content -> . basic_types
+    (59) collection_content -> . basic_types COLON basic_types
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    collection_contents            shift and go to state 44
+    collection_content             shift and go to state 45
+    basic_types                    shift and go to state 46
+    collections                    shift and go to state 22
+
+state 15
+
+    (17) for_statement -> FOR . IDENTIFIER IN for_sequence LBRACE statements RBRACE
+
+    IDENTIFIER      shift and go to state 47
+
+
+state 16
+
+    (40) while_statement -> while_block . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 48
+
+
+state 17
+
+    (41) while_statement -> REPEAT . LBRACE statements RBRACE while_block
+
+    LBRACE          shift and go to state 49
+
+
+state 18
+
+    (49) basic_types -> INT .
+
+    PLUS            reduce using rule 49 (basic_types -> INT .)
+    MINUS           reduce using rule 49 (basic_types -> INT .)
+    TIMES           reduce using rule 49 (basic_types -> INT .)
+    DIVIDE          reduce using rule 49 (basic_types -> INT .)
+    MOD             reduce using rule 49 (basic_types -> INT .)
+    EQEQ            reduce using rule 49 (basic_types -> INT .)
+    NOT_EQUAL       reduce using rule 49 (basic_types -> INT .)
+    LESS            reduce using rule 49 (basic_types -> INT .)
+    LESS_EQUAL      reduce using rule 49 (basic_types -> INT .)
+    GREATER         reduce using rule 49 (basic_types -> INT .)
+    GREATER_EQUAL   reduce using rule 49 (basic_types -> INT .)
+    AND             reduce using rule 49 (basic_types -> INT .)
+    OR              reduce using rule 49 (basic_types -> INT .)
+    LET             reduce using rule 49 (basic_types -> INT .)
+    VAR             reduce using rule 49 (basic_types -> INT .)
+    IDENTIFIER      reduce using rule 49 (basic_types -> INT .)
+    IF              reduce using rule 49 (basic_types -> INT .)
+    FOR             reduce using rule 49 (basic_types -> INT .)
+    REPEAT          reduce using rule 49 (basic_types -> INT .)
+    INT             reduce using rule 49 (basic_types -> INT .)
+    FLOAT           reduce using rule 49 (basic_types -> INT .)
+    BOOL            reduce using rule 49 (basic_types -> INT .)
+    STRING          reduce using rule 49 (basic_types -> INT .)
+    WHILE           reduce using rule 49 (basic_types -> INT .)
+    LBRACKET        reduce using rule 49 (basic_types -> INT .)
+    LPAREN          reduce using rule 49 (basic_types -> INT .)
+    $end            reduce using rule 49 (basic_types -> INT .)
+    COLON           reduce using rule 49 (basic_types -> INT .)
+    COMMA           reduce using rule 49 (basic_types -> INT .)
+    RPAREN          reduce using rule 49 (basic_types -> INT .)
+    RBRACKET        reduce using rule 49 (basic_types -> INT .)
+    RBRACE          reduce using rule 49 (basic_types -> INT .)
+
+
+state 19
+
+    (50) basic_types -> FLOAT .
+
+    PLUS            reduce using rule 50 (basic_types -> FLOAT .)
+    MINUS           reduce using rule 50 (basic_types -> FLOAT .)
+    TIMES           reduce using rule 50 (basic_types -> FLOAT .)
+    DIVIDE          reduce using rule 50 (basic_types -> FLOAT .)
+    MOD             reduce using rule 50 (basic_types -> FLOAT .)
+    EQEQ            reduce using rule 50 (basic_types -> FLOAT .)
+    NOT_EQUAL       reduce using rule 50 (basic_types -> FLOAT .)
+    LESS            reduce using rule 50 (basic_types -> FLOAT .)
+    LESS_EQUAL      reduce using rule 50 (basic_types -> FLOAT .)
+    GREATER         reduce using rule 50 (basic_types -> FLOAT .)
+    GREATER_EQUAL   reduce using rule 50 (basic_types -> FLOAT .)
+    AND             reduce using rule 50 (basic_types -> FLOAT .)
+    OR              reduce using rule 50 (basic_types -> FLOAT .)
+    LET             reduce using rule 50 (basic_types -> FLOAT .)
+    VAR             reduce using rule 50 (basic_types -> FLOAT .)
+    IDENTIFIER      reduce using rule 50 (basic_types -> FLOAT .)
+    IF              reduce using rule 50 (basic_types -> FLOAT .)
+    FOR             reduce using rule 50 (basic_types -> FLOAT .)
+    REPEAT          reduce using rule 50 (basic_types -> FLOAT .)
+    INT             reduce using rule 50 (basic_types -> FLOAT .)
+    FLOAT           reduce using rule 50 (basic_types -> FLOAT .)
+    BOOL            reduce using rule 50 (basic_types -> FLOAT .)
+    STRING          reduce using rule 50 (basic_types -> FLOAT .)
+    WHILE           reduce using rule 50 (basic_types -> FLOAT .)
+    LBRACKET        reduce using rule 50 (basic_types -> FLOAT .)
+    LPAREN          reduce using rule 50 (basic_types -> FLOAT .)
+    $end            reduce using rule 50 (basic_types -> FLOAT .)
+    COLON           reduce using rule 50 (basic_types -> FLOAT .)
+    COMMA           reduce using rule 50 (basic_types -> FLOAT .)
+    RPAREN          reduce using rule 50 (basic_types -> FLOAT .)
+    RBRACKET        reduce using rule 50 (basic_types -> FLOAT .)
+    RBRACE          reduce using rule 50 (basic_types -> FLOAT .)
+
+
+state 20
+
+    (51) basic_types -> BOOL .
+
+    PLUS            reduce using rule 51 (basic_types -> BOOL .)
+    MINUS           reduce using rule 51 (basic_types -> BOOL .)
+    TIMES           reduce using rule 51 (basic_types -> BOOL .)
+    DIVIDE          reduce using rule 51 (basic_types -> BOOL .)
+    MOD             reduce using rule 51 (basic_types -> BOOL .)
+    EQEQ            reduce using rule 51 (basic_types -> BOOL .)
+    NOT_EQUAL       reduce using rule 51 (basic_types -> BOOL .)
+    LESS            reduce using rule 51 (basic_types -> BOOL .)
+    LESS_EQUAL      reduce using rule 51 (basic_types -> BOOL .)
+    GREATER         reduce using rule 51 (basic_types -> BOOL .)
+    GREATER_EQUAL   reduce using rule 51 (basic_types -> BOOL .)
+    AND             reduce using rule 51 (basic_types -> BOOL .)
+    OR              reduce using rule 51 (basic_types -> BOOL .)
+    LET             reduce using rule 51 (basic_types -> BOOL .)
+    VAR             reduce using rule 51 (basic_types -> BOOL .)
+    IDENTIFIER      reduce using rule 51 (basic_types -> BOOL .)
+    IF              reduce using rule 51 (basic_types -> BOOL .)
+    FOR             reduce using rule 51 (basic_types -> BOOL .)
+    REPEAT          reduce using rule 51 (basic_types -> BOOL .)
+    INT             reduce using rule 51 (basic_types -> BOOL .)
+    FLOAT           reduce using rule 51 (basic_types -> BOOL .)
+    BOOL            reduce using rule 51 (basic_types -> BOOL .)
+    STRING          reduce using rule 51 (basic_types -> BOOL .)
+    WHILE           reduce using rule 51 (basic_types -> BOOL .)
+    LBRACKET        reduce using rule 51 (basic_types -> BOOL .)
+    LPAREN          reduce using rule 51 (basic_types -> BOOL .)
+    $end            reduce using rule 51 (basic_types -> BOOL .)
+    COLON           reduce using rule 51 (basic_types -> BOOL .)
+    COMMA           reduce using rule 51 (basic_types -> BOOL .)
+    RPAREN          reduce using rule 51 (basic_types -> BOOL .)
+    RBRACKET        reduce using rule 51 (basic_types -> BOOL .)
+    RBRACE          reduce using rule 51 (basic_types -> BOOL .)
+
+
+state 21
+
+    (52) basic_types -> STRING .
+
+    PLUS            reduce using rule 52 (basic_types -> STRING .)
+    MINUS           reduce using rule 52 (basic_types -> STRING .)
+    TIMES           reduce using rule 52 (basic_types -> STRING .)
+    DIVIDE          reduce using rule 52 (basic_types -> STRING .)
+    MOD             reduce using rule 52 (basic_types -> STRING .)
+    EQEQ            reduce using rule 52 (basic_types -> STRING .)
+    NOT_EQUAL       reduce using rule 52 (basic_types -> STRING .)
+    LESS            reduce using rule 52 (basic_types -> STRING .)
+    LESS_EQUAL      reduce using rule 52 (basic_types -> STRING .)
+    GREATER         reduce using rule 52 (basic_types -> STRING .)
+    GREATER_EQUAL   reduce using rule 52 (basic_types -> STRING .)
+    AND             reduce using rule 52 (basic_types -> STRING .)
+    OR              reduce using rule 52 (basic_types -> STRING .)
+    LET             reduce using rule 52 (basic_types -> STRING .)
+    VAR             reduce using rule 52 (basic_types -> STRING .)
+    IDENTIFIER      reduce using rule 52 (basic_types -> STRING .)
+    IF              reduce using rule 52 (basic_types -> STRING .)
+    FOR             reduce using rule 52 (basic_types -> STRING .)
+    REPEAT          reduce using rule 52 (basic_types -> STRING .)
+    INT             reduce using rule 52 (basic_types -> STRING .)
+    FLOAT           reduce using rule 52 (basic_types -> STRING .)
+    BOOL            reduce using rule 52 (basic_types -> STRING .)
+    STRING          reduce using rule 52 (basic_types -> STRING .)
+    WHILE           reduce using rule 52 (basic_types -> STRING .)
+    LBRACKET        reduce using rule 52 (basic_types -> STRING .)
+    LPAREN          reduce using rule 52 (basic_types -> STRING .)
+    $end            reduce using rule 52 (basic_types -> STRING .)
+    COLON           reduce using rule 52 (basic_types -> STRING .)
+    COMMA           reduce using rule 52 (basic_types -> STRING .)
+    RPAREN          reduce using rule 52 (basic_types -> STRING .)
+    RBRACKET        reduce using rule 52 (basic_types -> STRING .)
+    RBRACE          reduce using rule 52 (basic_types -> STRING .)
+
+
+state 22
+
+    (53) basic_types -> collections .
+
+    PLUS            reduce using rule 53 (basic_types -> collections .)
+    MINUS           reduce using rule 53 (basic_types -> collections .)
+    TIMES           reduce using rule 53 (basic_types -> collections .)
+    DIVIDE          reduce using rule 53 (basic_types -> collections .)
+    MOD             reduce using rule 53 (basic_types -> collections .)
+    EQEQ            reduce using rule 53 (basic_types -> collections .)
+    NOT_EQUAL       reduce using rule 53 (basic_types -> collections .)
+    LESS            reduce using rule 53 (basic_types -> collections .)
+    LESS_EQUAL      reduce using rule 53 (basic_types -> collections .)
+    GREATER         reduce using rule 53 (basic_types -> collections .)
+    GREATER_EQUAL   reduce using rule 53 (basic_types -> collections .)
+    AND             reduce using rule 53 (basic_types -> collections .)
+    OR              reduce using rule 53 (basic_types -> collections .)
+    LET             reduce using rule 53 (basic_types -> collections .)
+    VAR             reduce using rule 53 (basic_types -> collections .)
+    IDENTIFIER      reduce using rule 53 (basic_types -> collections .)
+    IF              reduce using rule 53 (basic_types -> collections .)
+    FOR             reduce using rule 53 (basic_types -> collections .)
+    REPEAT          reduce using rule 53 (basic_types -> collections .)
+    INT             reduce using rule 53 (basic_types -> collections .)
+    FLOAT           reduce using rule 53 (basic_types -> collections .)
+    BOOL            reduce using rule 53 (basic_types -> collections .)
+    STRING          reduce using rule 53 (basic_types -> collections .)
+    WHILE           reduce using rule 53 (basic_types -> collections .)
+    LBRACKET        reduce using rule 53 (basic_types -> collections .)
+    LPAREN          reduce using rule 53 (basic_types -> collections .)
+    $end            reduce using rule 53 (basic_types -> collections .)
+    COLON           reduce using rule 53 (basic_types -> collections .)
+    COMMA           reduce using rule 53 (basic_types -> collections .)
+    RPAREN          reduce using rule 53 (basic_types -> collections .)
+    RBRACKET        reduce using rule 53 (basic_types -> collections .)
+    RBRACE          reduce using rule 53 (basic_types -> collections .)
+
+
+state 23
+
+    (34) while_block -> WHILE . LPAREN expression RPAREN
+
+    LPAREN          shift and go to state 50
+
+
+state 24
+
+    (54) collections -> LBRACKET . collection_contents RBRACKET
+    (56) collection_contents -> . collection_content
+    (57) collection_contents -> . collection_content COMMA collection_contents
+    (58) collection_content -> . basic_types
+    (59) collection_content -> . basic_types COLON basic_types
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    collection_contents            shift and go to state 51
+    collection_content             shift and go to state 45
+    basic_types                    shift and go to state 46
+    collections                    shift and go to state 22
+
+state 25
+
+    (2) statements -> statements statement .
+
+    LET             reduce using rule 2 (statements -> statements statement .)
+    VAR             reduce using rule 2 (statements -> statements statement .)
+    IDENTIFIER      reduce using rule 2 (statements -> statements statement .)
+    IF              reduce using rule 2 (statements -> statements statement .)
+    FOR             reduce using rule 2 (statements -> statements statement .)
+    REPEAT          reduce using rule 2 (statements -> statements statement .)
+    INT             reduce using rule 2 (statements -> statements statement .)
+    FLOAT           reduce using rule 2 (statements -> statements statement .)
+    BOOL            reduce using rule 2 (statements -> statements statement .)
+    STRING          reduce using rule 2 (statements -> statements statement .)
+    WHILE           reduce using rule 2 (statements -> statements statement .)
+    LBRACKET        reduce using rule 2 (statements -> statements statement .)
+    LPAREN          reduce using rule 2 (statements -> statements statement .)
+    $end            reduce using rule 2 (statements -> statements statement .)
+    RBRACE          reduce using rule 2 (statements -> statements statement .)
+
+
+state 26
+
+    (48) comparison_expression -> expression bin_operators . expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 52
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 27
+
+    (4) bin_operators -> PLUS .
+
+    IDENTIFIER      reduce using rule 4 (bin_operators -> PLUS .)
+    INT             reduce using rule 4 (bin_operators -> PLUS .)
+    FLOAT           reduce using rule 4 (bin_operators -> PLUS .)
+    BOOL            reduce using rule 4 (bin_operators -> PLUS .)
+    STRING          reduce using rule 4 (bin_operators -> PLUS .)
+    LBRACKET        reduce using rule 4 (bin_operators -> PLUS .)
+    LPAREN          reduce using rule 4 (bin_operators -> PLUS .)
+
+
+state 28
+
+    (5) bin_operators -> MINUS .
+
+    IDENTIFIER      reduce using rule 5 (bin_operators -> MINUS .)
+    INT             reduce using rule 5 (bin_operators -> MINUS .)
+    FLOAT           reduce using rule 5 (bin_operators -> MINUS .)
+    BOOL            reduce using rule 5 (bin_operators -> MINUS .)
+    STRING          reduce using rule 5 (bin_operators -> MINUS .)
+    LBRACKET        reduce using rule 5 (bin_operators -> MINUS .)
+    LPAREN          reduce using rule 5 (bin_operators -> MINUS .)
+
+
+state 29
+
+    (6) bin_operators -> TIMES .
+
+    IDENTIFIER      reduce using rule 6 (bin_operators -> TIMES .)
+    INT             reduce using rule 6 (bin_operators -> TIMES .)
+    FLOAT           reduce using rule 6 (bin_operators -> TIMES .)
+    BOOL            reduce using rule 6 (bin_operators -> TIMES .)
+    STRING          reduce using rule 6 (bin_operators -> TIMES .)
+    LBRACKET        reduce using rule 6 (bin_operators -> TIMES .)
+    LPAREN          reduce using rule 6 (bin_operators -> TIMES .)
+
+
+state 30
+
+    (7) bin_operators -> DIVIDE .
+
+    IDENTIFIER      reduce using rule 7 (bin_operators -> DIVIDE .)
+    INT             reduce using rule 7 (bin_operators -> DIVIDE .)
+    FLOAT           reduce using rule 7 (bin_operators -> DIVIDE .)
+    BOOL            reduce using rule 7 (bin_operators -> DIVIDE .)
+    STRING          reduce using rule 7 (bin_operators -> DIVIDE .)
+    LBRACKET        reduce using rule 7 (bin_operators -> DIVIDE .)
+    LPAREN          reduce using rule 7 (bin_operators -> DIVIDE .)
+
+
+state 31
+
+    (8) bin_operators -> MOD .
+
+    IDENTIFIER      reduce using rule 8 (bin_operators -> MOD .)
+    INT             reduce using rule 8 (bin_operators -> MOD .)
+    FLOAT           reduce using rule 8 (bin_operators -> MOD .)
+    BOOL            reduce using rule 8 (bin_operators -> MOD .)
+    STRING          reduce using rule 8 (bin_operators -> MOD .)
+    LBRACKET        reduce using rule 8 (bin_operators -> MOD .)
+    LPAREN          reduce using rule 8 (bin_operators -> MOD .)
+
+
+state 32
+
+    (9) bin_operators -> EQEQ .
+
+    IDENTIFIER      reduce using rule 9 (bin_operators -> EQEQ .)
+    INT             reduce using rule 9 (bin_operators -> EQEQ .)
+    FLOAT           reduce using rule 9 (bin_operators -> EQEQ .)
+    BOOL            reduce using rule 9 (bin_operators -> EQEQ .)
+    STRING          reduce using rule 9 (bin_operators -> EQEQ .)
+    LBRACKET        reduce using rule 9 (bin_operators -> EQEQ .)
+    LPAREN          reduce using rule 9 (bin_operators -> EQEQ .)
+
+
+state 33
+
+    (10) bin_operators -> NOT_EQUAL .
+
+    IDENTIFIER      reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    INT             reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    FLOAT           reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    BOOL            reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    STRING          reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    LBRACKET        reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+    LPAREN          reduce using rule 10 (bin_operators -> NOT_EQUAL .)
+
+
+state 34
+
+    (11) bin_operators -> LESS .
+
+    IDENTIFIER      reduce using rule 11 (bin_operators -> LESS .)
+    INT             reduce using rule 11 (bin_operators -> LESS .)
+    FLOAT           reduce using rule 11 (bin_operators -> LESS .)
+    BOOL            reduce using rule 11 (bin_operators -> LESS .)
+    STRING          reduce using rule 11 (bin_operators -> LESS .)
+    LBRACKET        reduce using rule 11 (bin_operators -> LESS .)
+    LPAREN          reduce using rule 11 (bin_operators -> LESS .)
+
+
+state 35
+
+    (12) bin_operators -> LESS_EQUAL .
+
+    IDENTIFIER      reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    INT             reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    FLOAT           reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    BOOL            reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    STRING          reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    LBRACKET        reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+    LPAREN          reduce using rule 12 (bin_operators -> LESS_EQUAL .)
+
+
+state 36
+
+    (13) bin_operators -> GREATER .
+
+    IDENTIFIER      reduce using rule 13 (bin_operators -> GREATER .)
+    INT             reduce using rule 13 (bin_operators -> GREATER .)
+    FLOAT           reduce using rule 13 (bin_operators -> GREATER .)
+    BOOL            reduce using rule 13 (bin_operators -> GREATER .)
+    STRING          reduce using rule 13 (bin_operators -> GREATER .)
+    LBRACKET        reduce using rule 13 (bin_operators -> GREATER .)
+    LPAREN          reduce using rule 13 (bin_operators -> GREATER .)
+
+
+state 37
+
+    (14) bin_operators -> GREATER_EQUAL .
+
+    IDENTIFIER      reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    INT             reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    FLOAT           reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    BOOL            reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    STRING          reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    LBRACKET        reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+    LPAREN          reduce using rule 14 (bin_operators -> GREATER_EQUAL .)
+
+
+state 38
+
+    (15) bin_operators -> AND .
+
+    IDENTIFIER      reduce using rule 15 (bin_operators -> AND .)
+    INT             reduce using rule 15 (bin_operators -> AND .)
+    FLOAT           reduce using rule 15 (bin_operators -> AND .)
+    BOOL            reduce using rule 15 (bin_operators -> AND .)
+    STRING          reduce using rule 15 (bin_operators -> AND .)
+    LBRACKET        reduce using rule 15 (bin_operators -> AND .)
+    LPAREN          reduce using rule 15 (bin_operators -> AND .)
+
+
+state 39
+
+    (16) bin_operators -> OR .
+
+    IDENTIFIER      reduce using rule 16 (bin_operators -> OR .)
+    INT             reduce using rule 16 (bin_operators -> OR .)
+    FLOAT           reduce using rule 16 (bin_operators -> OR .)
+    BOOL            reduce using rule 16 (bin_operators -> OR .)
+    STRING          reduce using rule 16 (bin_operators -> OR .)
+    LBRACKET        reduce using rule 16 (bin_operators -> OR .)
+    LPAREN          reduce using rule 16 (bin_operators -> OR .)
+
+
+state 40
+
+    (31) data_declaration -> LET IDENTIFIER . COLON typehint EQUAL expression
+
+    COLON           shift and go to state 54
+
+
+state 41
+
+    (33) data_declaration -> IDENTIFIER EQUAL . expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 55
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 42
+
+    (32) data_declaration -> VAR IDENTIFIER . COLON typehint EQUAL expression
+
+    COLON           shift and go to state 56
+
+
+state 43
+
+    (3) if_statement -> IF LPAREN . expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 57
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 44
+
+    (55) collections -> LPAREN collection_contents . RPAREN
+
+    RPAREN          shift and go to state 58
+
+
+state 45
+
+    (56) collection_contents -> collection_content .
+    (57) collection_contents -> collection_content . COMMA collection_contents
+
+    RPAREN          reduce using rule 56 (collection_contents -> collection_content .)
+    RBRACKET        reduce using rule 56 (collection_contents -> collection_content .)
+    COMMA           shift and go to state 59
+
+
+state 46
+
+    (58) collection_content -> basic_types .
+    (59) collection_content -> basic_types . COLON basic_types
+
+    COMMA           reduce using rule 58 (collection_content -> basic_types .)
+    RPAREN          reduce using rule 58 (collection_content -> basic_types .)
+    RBRACKET        reduce using rule 58 (collection_content -> basic_types .)
+    COLON           shift and go to state 60
+
+
+state 47
+
+    (17) for_statement -> FOR IDENTIFIER . IN for_sequence LBRACE statements RBRACE
+
+    IN              shift and go to state 61
+
+
+state 48
+
+    (40) while_statement -> while_block LBRACE . statements RBRACE
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    while_block                    shift and go to state 16
+    statements                     shift and go to state 62
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 49
+
+    (41) while_statement -> REPEAT LBRACE . statements RBRACE while_block
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statements                     shift and go to state 63
+    while_block                    shift and go to state 16
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 50
+
+    (34) while_block -> WHILE LPAREN . expression RPAREN
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 64
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 51
+
+    (54) collections -> LBRACKET collection_contents . RBRACKET
+
+    RBRACKET        shift and go to state 65
+
+
+state 52
+
+    (48) comparison_expression -> expression bin_operators expression .
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for DIVIDE resolved as shift
+  ! shift/reduce conflict for MOD resolved as shift
+  ! shift/reduce conflict for EQEQ resolved as shift
+  ! shift/reduce conflict for NOT_EQUAL resolved as shift
+  ! shift/reduce conflict for LESS resolved as shift
+  ! shift/reduce conflict for LESS_EQUAL resolved as shift
+  ! shift/reduce conflict for GREATER resolved as shift
+  ! shift/reduce conflict for GREATER_EQUAL resolved as shift
+  ! shift/reduce conflict for AND resolved as shift
+  ! shift/reduce conflict for OR resolved as shift
+    LET             reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    VAR             reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    IDENTIFIER      reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    IF              reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    FOR             reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    REPEAT          reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    INT             reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    FLOAT           reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    BOOL            reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    STRING          reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    WHILE           reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    LBRACKET        reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    LPAREN          reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    $end            reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    RBRACE          reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    RPAREN          reduce using rule 48 (comparison_expression -> expression bin_operators expression .)
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+  ! PLUS            [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! MINUS           [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! TIMES           [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! DIVIDE          [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! MOD             [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! EQEQ            [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! NOT_EQUAL       [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! LESS            [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! LESS_EQUAL      [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! GREATER         [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! GREATER_EQUAL   [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! AND             [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+  ! OR              [ reduce using rule 48 (comparison_expression -> expression bin_operators expression .) ]
+
+    bin_operators                  shift and go to state 26
+
+state 53
+
+    (45) expression -> IDENTIFIER .
+
+    PLUS            reduce using rule 45 (expression -> IDENTIFIER .)
+    MINUS           reduce using rule 45 (expression -> IDENTIFIER .)
+    TIMES           reduce using rule 45 (expression -> IDENTIFIER .)
+    DIVIDE          reduce using rule 45 (expression -> IDENTIFIER .)
+    MOD             reduce using rule 45 (expression -> IDENTIFIER .)
+    EQEQ            reduce using rule 45 (expression -> IDENTIFIER .)
+    NOT_EQUAL       reduce using rule 45 (expression -> IDENTIFIER .)
+    LESS            reduce using rule 45 (expression -> IDENTIFIER .)
+    LESS_EQUAL      reduce using rule 45 (expression -> IDENTIFIER .)
+    GREATER         reduce using rule 45 (expression -> IDENTIFIER .)
+    GREATER_EQUAL   reduce using rule 45 (expression -> IDENTIFIER .)
+    AND             reduce using rule 45 (expression -> IDENTIFIER .)
+    OR              reduce using rule 45 (expression -> IDENTIFIER .)
+    LET             reduce using rule 45 (expression -> IDENTIFIER .)
+    VAR             reduce using rule 45 (expression -> IDENTIFIER .)
+    IDENTIFIER      reduce using rule 45 (expression -> IDENTIFIER .)
+    IF              reduce using rule 45 (expression -> IDENTIFIER .)
+    FOR             reduce using rule 45 (expression -> IDENTIFIER .)
+    REPEAT          reduce using rule 45 (expression -> IDENTIFIER .)
+    INT             reduce using rule 45 (expression -> IDENTIFIER .)
+    FLOAT           reduce using rule 45 (expression -> IDENTIFIER .)
+    BOOL            reduce using rule 45 (expression -> IDENTIFIER .)
+    STRING          reduce using rule 45 (expression -> IDENTIFIER .)
+    WHILE           reduce using rule 45 (expression -> IDENTIFIER .)
+    LBRACKET        reduce using rule 45 (expression -> IDENTIFIER .)
+    LPAREN          reduce using rule 45 (expression -> IDENTIFIER .)
+    $end            reduce using rule 45 (expression -> IDENTIFIER .)
+    RBRACE          reduce using rule 45 (expression -> IDENTIFIER .)
+    RPAREN          reduce using rule 45 (expression -> IDENTIFIER .)
+
+
+state 54
+
+    (31) data_declaration -> LET IDENTIFIER COLON . typehint EQUAL expression
+    (42) typehint -> . LBRACKET basic_typehints RBRACKET
+    (43) typehint -> . LBRACKET basic_typehints COLON basic_typehints RBRACKET
+    (44) typehint -> . basic_typehints
+    (35) basic_typehints -> . INT_TYPE
+    (36) basic_typehints -> . FLOAT_TYPE
+    (37) basic_typehints -> . BOOL_TYPE
+    (38) basic_typehints -> . STRING_TYPE
+    (39) basic_typehints -> . SET_TYPE
+
+    LBRACKET        shift and go to state 67
+    INT_TYPE        shift and go to state 69
+    FLOAT_TYPE      shift and go to state 70
+    BOOL_TYPE       shift and go to state 71
+    STRING_TYPE     shift and go to state 72
+    SET_TYPE        shift and go to state 73
+
+    typehint                       shift and go to state 66
+    basic_typehints                shift and go to state 68
+
+state 55
+
+    (33) data_declaration -> IDENTIFIER EQUAL expression .
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    LET             reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    VAR             reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    IDENTIFIER      reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    IF              reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    FOR             reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    REPEAT          reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    INT             reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    FLOAT           reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    BOOL            reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    STRING          reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    WHILE           reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    LBRACKET        reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    LPAREN          reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    $end            reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    RBRACE          reduce using rule 33 (data_declaration -> IDENTIFIER EQUAL expression .)
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 56
+
+    (32) data_declaration -> VAR IDENTIFIER COLON . typehint EQUAL expression
+    (42) typehint -> . LBRACKET basic_typehints RBRACKET
+    (43) typehint -> . LBRACKET basic_typehints COLON basic_typehints RBRACKET
+    (44) typehint -> . basic_typehints
+    (35) basic_typehints -> . INT_TYPE
+    (36) basic_typehints -> . FLOAT_TYPE
+    (37) basic_typehints -> . BOOL_TYPE
+    (38) basic_typehints -> . STRING_TYPE
+    (39) basic_typehints -> . SET_TYPE
+
+    LBRACKET        shift and go to state 67
+    INT_TYPE        shift and go to state 69
+    FLOAT_TYPE      shift and go to state 70
+    BOOL_TYPE       shift and go to state 71
+    STRING_TYPE     shift and go to state 72
+    SET_TYPE        shift and go to state 73
+
+    typehint                       shift and go to state 74
+    basic_typehints                shift and go to state 68
+
+state 57
+
+    (3) if_statement -> IF LPAREN expression . RPAREN LBRACE statements RBRACE elifs else_statement
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    RPAREN          shift and go to state 75
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 58
+
+    (55) collections -> LPAREN collection_contents RPAREN .
+
+    PLUS            reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    MINUS           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    TIMES           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    DIVIDE          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    MOD             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    EQEQ            reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    NOT_EQUAL       reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LESS            reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LESS_EQUAL      reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    GREATER         reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    GREATER_EQUAL   reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    AND             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    OR              reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LET             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    VAR             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    IDENTIFIER      reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    IF              reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    FOR             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    REPEAT          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    INT             reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    FLOAT           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    BOOL            reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    STRING          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    WHILE           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LBRACKET        reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LPAREN          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    $end            reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    COLON           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    COMMA           reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    RPAREN          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    RBRACKET        reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    RBRACE          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+    LBRACE          reduce using rule 55 (collections -> LPAREN collection_contents RPAREN .)
+
+
+state 59
+
+    (57) collection_contents -> collection_content COMMA . collection_contents
+    (56) collection_contents -> . collection_content
+    (57) collection_contents -> . collection_content COMMA collection_contents
+    (58) collection_content -> . basic_types
+    (59) collection_content -> . basic_types COLON basic_types
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    collection_content             shift and go to state 45
+    collection_contents            shift and go to state 76
+    basic_types                    shift and go to state 46
+    collections                    shift and go to state 22
+
+state 60
+
+    (59) collection_content -> basic_types COLON . basic_types
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    basic_types                    shift and go to state 77
+    collections                    shift and go to state 22
+
+state 61
+
+    (17) for_statement -> FOR IDENTIFIER IN . for_sequence LBRACE statements RBRACE
+    (21) for_sequence -> . IDENTIFIER
+    (22) for_sequence -> . collections
+    (23) for_sequence -> . INT DOT DOT INT
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 78
+    INT             shift and go to state 81
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    for_sequence                   shift and go to state 79
+    collections                    shift and go to state 80
+
+state 62
+
+    (40) while_statement -> while_block LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 82
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    while_block                    shift and go to state 16
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 63
+
+    (41) while_statement -> REPEAT LBRACE statements . RBRACE while_block
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 83
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    while_block                    shift and go to state 16
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 64
+
+    (34) while_block -> WHILE LPAREN expression . RPAREN
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    RPAREN          shift and go to state 84
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 65
+
+    (54) collections -> LBRACKET collection_contents RBRACKET .
+
+    PLUS            reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    MINUS           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    TIMES           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    DIVIDE          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    MOD             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    EQEQ            reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    NOT_EQUAL       reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LESS            reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LESS_EQUAL      reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    GREATER         reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    GREATER_EQUAL   reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    AND             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    OR              reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LET             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    VAR             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    IDENTIFIER      reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    IF              reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    FOR             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    REPEAT          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    INT             reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    FLOAT           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    BOOL            reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    STRING          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    WHILE           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LBRACKET        reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LPAREN          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    $end            reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    COLON           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    COMMA           reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    RPAREN          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    RBRACKET        reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    RBRACE          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+    LBRACE          reduce using rule 54 (collections -> LBRACKET collection_contents RBRACKET .)
+
+
+state 66
+
+    (31) data_declaration -> LET IDENTIFIER COLON typehint . EQUAL expression
+
+    EQUAL           shift and go to state 85
+
+
+state 67
+
+    (42) typehint -> LBRACKET . basic_typehints RBRACKET
+    (43) typehint -> LBRACKET . basic_typehints COLON basic_typehints RBRACKET
+    (35) basic_typehints -> . INT_TYPE
+    (36) basic_typehints -> . FLOAT_TYPE
+    (37) basic_typehints -> . BOOL_TYPE
+    (38) basic_typehints -> . STRING_TYPE
+    (39) basic_typehints -> . SET_TYPE
+
+    INT_TYPE        shift and go to state 69
+    FLOAT_TYPE      shift and go to state 70
+    BOOL_TYPE       shift and go to state 71
+    STRING_TYPE     shift and go to state 72
+    SET_TYPE        shift and go to state 73
+
+    basic_typehints                shift and go to state 86
+
+state 68
+
+    (44) typehint -> basic_typehints .
+
+    EQUAL           reduce using rule 44 (typehint -> basic_typehints .)
+
+
+state 69
+
+    (35) basic_typehints -> INT_TYPE .
+
+    EQUAL           reduce using rule 35 (basic_typehints -> INT_TYPE .)
+    RBRACKET        reduce using rule 35 (basic_typehints -> INT_TYPE .)
+    COLON           reduce using rule 35 (basic_typehints -> INT_TYPE .)
+
+
+state 70
+
+    (36) basic_typehints -> FLOAT_TYPE .
+
+    EQUAL           reduce using rule 36 (basic_typehints -> FLOAT_TYPE .)
+    RBRACKET        reduce using rule 36 (basic_typehints -> FLOAT_TYPE .)
+    COLON           reduce using rule 36 (basic_typehints -> FLOAT_TYPE .)
+
+
+state 71
+
+    (37) basic_typehints -> BOOL_TYPE .
+
+    EQUAL           reduce using rule 37 (basic_typehints -> BOOL_TYPE .)
+    RBRACKET        reduce using rule 37 (basic_typehints -> BOOL_TYPE .)
+    COLON           reduce using rule 37 (basic_typehints -> BOOL_TYPE .)
+
+
+state 72
+
+    (38) basic_typehints -> STRING_TYPE .
+
+    EQUAL           reduce using rule 38 (basic_typehints -> STRING_TYPE .)
+    RBRACKET        reduce using rule 38 (basic_typehints -> STRING_TYPE .)
+    COLON           reduce using rule 38 (basic_typehints -> STRING_TYPE .)
+
+
+state 73
+
+    (39) basic_typehints -> SET_TYPE .
+
+    EQUAL           reduce using rule 39 (basic_typehints -> SET_TYPE .)
+    RBRACKET        reduce using rule 39 (basic_typehints -> SET_TYPE .)
+    COLON           reduce using rule 39 (basic_typehints -> SET_TYPE .)
+
+
+state 74
+
+    (32) data_declaration -> VAR IDENTIFIER COLON typehint . EQUAL expression
+
+    EQUAL           shift and go to state 87
+
+
+state 75
+
+    (3) if_statement -> IF LPAREN expression RPAREN . LBRACE statements RBRACE elifs else_statement
+
+    LBRACE          shift and go to state 88
+
+
+state 76
+
+    (57) collection_contents -> collection_content COMMA collection_contents .
+
+    RPAREN          reduce using rule 57 (collection_contents -> collection_content COMMA collection_contents .)
+    RBRACKET        reduce using rule 57 (collection_contents -> collection_content COMMA collection_contents .)
+
+
+state 77
+
+    (59) collection_content -> basic_types COLON basic_types .
+
+    COMMA           reduce using rule 59 (collection_content -> basic_types COLON basic_types .)
+    RPAREN          reduce using rule 59 (collection_content -> basic_types COLON basic_types .)
+    RBRACKET        reduce using rule 59 (collection_content -> basic_types COLON basic_types .)
+
+
+state 78
+
+    (21) for_sequence -> IDENTIFIER .
+
+    LBRACE          reduce using rule 21 (for_sequence -> IDENTIFIER .)
+
+
+state 79
+
+    (17) for_statement -> FOR IDENTIFIER IN for_sequence . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 89
+
+
+state 80
+
+    (22) for_sequence -> collections .
+
+    LBRACE          reduce using rule 22 (for_sequence -> collections .)
+
+
+state 81
+
+    (23) for_sequence -> INT . DOT DOT INT
+
+    DOT             shift and go to state 90
+
+
+state 82
+
+    (40) while_statement -> while_block LBRACE statements RBRACE .
+
+    LET             reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    VAR             reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    IDENTIFIER      reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    IF              reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    FOR             reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    REPEAT          reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    INT             reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    FLOAT           reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    BOOL            reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    STRING          reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    WHILE           reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    LBRACKET        reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    $end            reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 40 (while_statement -> while_block LBRACE statements RBRACE .)
+
+
+state 83
+
+    (41) while_statement -> REPEAT LBRACE statements RBRACE . while_block
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+
+    WHILE           shift and go to state 23
+
+    while_block                    shift and go to state 91
+
+state 84
+
+    (34) while_block -> WHILE LPAREN expression RPAREN .
+
+    LBRACE          reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    LET             reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    VAR             reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    IDENTIFIER      reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    IF              reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    FOR             reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    REPEAT          reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    INT             reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    FLOAT           reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    BOOL            reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    STRING          reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    WHILE           reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    LBRACKET        reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    LPAREN          reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    $end            reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+    RBRACE          reduce using rule 34 (while_block -> WHILE LPAREN expression RPAREN .)
+
+
+state 85
+
+    (31) data_declaration -> LET IDENTIFIER COLON typehint EQUAL . expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 92
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 86
+
+    (42) typehint -> LBRACKET basic_typehints . RBRACKET
+    (43) typehint -> LBRACKET basic_typehints . COLON basic_typehints RBRACKET
+
+    RBRACKET        shift and go to state 93
+    COLON           shift and go to state 94
+
+
+state 87
+
+    (32) data_declaration -> VAR IDENTIFIER COLON typehint EQUAL . expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 95
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 88
+
+    (3) if_statement -> IF LPAREN expression RPAREN LBRACE . statements RBRACE elifs else_statement
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 4
+    statements                     shift and go to state 96
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 89
+
+    (17) for_statement -> FOR IDENTIFIER IN for_sequence LBRACE . statements RBRACE
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statements                     shift and go to state 97
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 90
+
+    (23) for_sequence -> INT DOT . DOT INT
+
+    DOT             shift and go to state 98
+
+
+state 91
+
+    (41) while_statement -> REPEAT LBRACE statements RBRACE while_block .
+
+    LET             reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    VAR             reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    IDENTIFIER      reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    IF              reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    FOR             reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    REPEAT          reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    INT             reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    FLOAT           reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    BOOL            reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    STRING          reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    WHILE           reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    LBRACKET        reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    LPAREN          reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    $end            reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+    RBRACE          reduce using rule 41 (while_statement -> REPEAT LBRACE statements RBRACE while_block .)
+
+
+state 92
+
+    (31) data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    LET             reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    VAR             reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    IDENTIFIER      reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    IF              reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    FOR             reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    REPEAT          reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    INT             reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    FLOAT           reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    BOOL            reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    STRING          reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    WHILE           reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    LBRACKET        reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    LPAREN          reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    $end            reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    RBRACE          reduce using rule 31 (data_declaration -> LET IDENTIFIER COLON typehint EQUAL expression .)
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 93
+
+    (42) typehint -> LBRACKET basic_typehints RBRACKET .
+
+    EQUAL           reduce using rule 42 (typehint -> LBRACKET basic_typehints RBRACKET .)
+
+
+state 94
+
+    (43) typehint -> LBRACKET basic_typehints COLON . basic_typehints RBRACKET
+    (35) basic_typehints -> . INT_TYPE
+    (36) basic_typehints -> . FLOAT_TYPE
+    (37) basic_typehints -> . BOOL_TYPE
+    (38) basic_typehints -> . STRING_TYPE
+    (39) basic_typehints -> . SET_TYPE
+
+    INT_TYPE        shift and go to state 69
+    FLOAT_TYPE      shift and go to state 70
+    BOOL_TYPE       shift and go to state 71
+    STRING_TYPE     shift and go to state 72
+    SET_TYPE        shift and go to state 73
+
+    basic_typehints                shift and go to state 99
+
+state 95
+
+    (32) data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    LET             reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    VAR             reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    IDENTIFIER      reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    IF              reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    FOR             reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    REPEAT          reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    INT             reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    FLOAT           reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    BOOL            reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    STRING          reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    WHILE           reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    LBRACKET        reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    LPAREN          reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    $end            reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    RBRACE          reduce using rule 32 (data_declaration -> VAR IDENTIFIER COLON typehint EQUAL expression .)
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 96
+
+    (3) if_statement -> IF LPAREN expression RPAREN LBRACE statements . RBRACE elifs else_statement
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 100
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 4
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 97
+
+    (17) for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 101
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 98
+
+    (23) for_sequence -> INT DOT DOT . INT
+
+    INT             shift and go to state 102
+
+
+state 99
+
+    (43) typehint -> LBRACKET basic_typehints COLON basic_typehints . RBRACKET
+
+    RBRACKET        shift and go to state 103
+
+
+state 100
+
+    (3) if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE . elifs else_statement
+    (19) elifs -> . elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE
+    (20) elifs -> . empty
+    (18) empty -> .
+
+    ELIF            reduce using rule 18 (empty -> .)
+    ELSE            reduce using rule 18 (empty -> .)
+    LET             reduce using rule 18 (empty -> .)
+    VAR             reduce using rule 18 (empty -> .)
+    IDENTIFIER      reduce using rule 18 (empty -> .)
+    IF              reduce using rule 18 (empty -> .)
+    FOR             reduce using rule 18 (empty -> .)
+    REPEAT          reduce using rule 18 (empty -> .)
+    INT             reduce using rule 18 (empty -> .)
+    FLOAT           reduce using rule 18 (empty -> .)
+    BOOL            reduce using rule 18 (empty -> .)
+    STRING          reduce using rule 18 (empty -> .)
+    WHILE           reduce using rule 18 (empty -> .)
+    LBRACKET        reduce using rule 18 (empty -> .)
+    LPAREN          reduce using rule 18 (empty -> .)
+    $end            reduce using rule 18 (empty -> .)
+    RBRACE          reduce using rule 18 (empty -> .)
+
+    elifs                          shift and go to state 104
+    empty                          shift and go to state 105
+
+state 101
+
+    (17) for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .
+
+    LET             reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    VAR             reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    IDENTIFIER      reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    IF              reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    FOR             reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    REPEAT          reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    INT             reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    FLOAT           reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    BOOL            reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    STRING          reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    WHILE           reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    LBRACKET        reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    $end            reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 17 (for_statement -> FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE .)
+
+
+state 102
+
+    (23) for_sequence -> INT DOT DOT INT .
+
+    LBRACE          reduce using rule 23 (for_sequence -> INT DOT DOT INT .)
+
+
+state 103
+
+    (43) typehint -> LBRACKET basic_typehints COLON basic_typehints RBRACKET .
+
+    EQUAL           reduce using rule 43 (typehint -> LBRACKET basic_typehints COLON basic_typehints RBRACKET .)
+
+
+state 104
+
+    (3) if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs . else_statement
+    (19) elifs -> elifs . ELIF LPAREN expression RPAREN LBRACE statements RBRACE
+    (29) else_statement -> . ELSE LBRACE statements RBRACE
+    (30) else_statement -> . empty
+    (18) empty -> .
+
+    ELIF            shift and go to state 107
+    ELSE            shift and go to state 108
+    LET             reduce using rule 18 (empty -> .)
+    VAR             reduce using rule 18 (empty -> .)
+    IDENTIFIER      reduce using rule 18 (empty -> .)
+    IF              reduce using rule 18 (empty -> .)
+    FOR             reduce using rule 18 (empty -> .)
+    REPEAT          reduce using rule 18 (empty -> .)
+    INT             reduce using rule 18 (empty -> .)
+    FLOAT           reduce using rule 18 (empty -> .)
+    BOOL            reduce using rule 18 (empty -> .)
+    STRING          reduce using rule 18 (empty -> .)
+    WHILE           reduce using rule 18 (empty -> .)
+    LBRACKET        reduce using rule 18 (empty -> .)
+    LPAREN          reduce using rule 18 (empty -> .)
+    $end            reduce using rule 18 (empty -> .)
+    RBRACE          reduce using rule 18 (empty -> .)
+
+    else_statement                 shift and go to state 106
+    empty                          shift and go to state 109
+
+state 105
+
+    (20) elifs -> empty .
+
+    ELIF            reduce using rule 20 (elifs -> empty .)
+    ELSE            reduce using rule 20 (elifs -> empty .)
+    LET             reduce using rule 20 (elifs -> empty .)
+    VAR             reduce using rule 20 (elifs -> empty .)
+    IDENTIFIER      reduce using rule 20 (elifs -> empty .)
+    IF              reduce using rule 20 (elifs -> empty .)
+    FOR             reduce using rule 20 (elifs -> empty .)
+    REPEAT          reduce using rule 20 (elifs -> empty .)
+    INT             reduce using rule 20 (elifs -> empty .)
+    FLOAT           reduce using rule 20 (elifs -> empty .)
+    BOOL            reduce using rule 20 (elifs -> empty .)
+    STRING          reduce using rule 20 (elifs -> empty .)
+    WHILE           reduce using rule 20 (elifs -> empty .)
+    LBRACKET        reduce using rule 20 (elifs -> empty .)
+    LPAREN          reduce using rule 20 (elifs -> empty .)
+    $end            reduce using rule 20 (elifs -> empty .)
+    RBRACE          reduce using rule 20 (elifs -> empty .)
+
+
+state 106
+
+    (3) if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .
+
+    LET             reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    VAR             reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    IDENTIFIER      reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    IF              reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    FOR             reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    REPEAT          reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    INT             reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    FLOAT           reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    BOOL            reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    STRING          reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    WHILE           reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    LBRACKET        reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    LPAREN          reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    $end            reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+    RBRACE          reduce using rule 3 (if_statement -> IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement .)
+
+
+state 107
+
+    (19) elifs -> elifs ELIF . LPAREN expression RPAREN LBRACE statements RBRACE
+
+    LPAREN          shift and go to state 110
+
+
+state 108
+
+    (29) else_statement -> ELSE . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 111
+
+
+state 109
+
+    (30) else_statement -> empty .
+
+    LET             reduce using rule 30 (else_statement -> empty .)
+    VAR             reduce using rule 30 (else_statement -> empty .)
+    IDENTIFIER      reduce using rule 30 (else_statement -> empty .)
+    IF              reduce using rule 30 (else_statement -> empty .)
+    FOR             reduce using rule 30 (else_statement -> empty .)
+    REPEAT          reduce using rule 30 (else_statement -> empty .)
+    INT             reduce using rule 30 (else_statement -> empty .)
+    FLOAT           reduce using rule 30 (else_statement -> empty .)
+    BOOL            reduce using rule 30 (else_statement -> empty .)
+    STRING          reduce using rule 30 (else_statement -> empty .)
+    WHILE           reduce using rule 30 (else_statement -> empty .)
+    LBRACKET        reduce using rule 30 (else_statement -> empty .)
+    LPAREN          reduce using rule 30 (else_statement -> empty .)
+    $end            reduce using rule 30 (else_statement -> empty .)
+    RBRACE          reduce using rule 30 (else_statement -> empty .)
+
+
+state 110
+
+    (19) elifs -> elifs ELIF LPAREN . expression RPAREN LBRACE statements RBRACE
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    IDENTIFIER      shift and go to state 53
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 112
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    collections                    shift and go to state 22
+
+state 111
+
+    (29) else_statement -> ELSE LBRACE . statements RBRACE
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statements                     shift and go to state 113
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 112
+
+    (19) elifs -> elifs ELIF LPAREN expression . RPAREN LBRACE statements RBRACE
+    (48) comparison_expression -> expression . bin_operators expression
+    (4) bin_operators -> . PLUS
+    (5) bin_operators -> . MINUS
+    (6) bin_operators -> . TIMES
+    (7) bin_operators -> . DIVIDE
+    (8) bin_operators -> . MOD
+    (9) bin_operators -> . EQEQ
+    (10) bin_operators -> . NOT_EQUAL
+    (11) bin_operators -> . LESS
+    (12) bin_operators -> . LESS_EQUAL
+    (13) bin_operators -> . GREATER
+    (14) bin_operators -> . GREATER_EQUAL
+    (15) bin_operators -> . AND
+    (16) bin_operators -> . OR
+
+    RPAREN          shift and go to state 114
+    PLUS            shift and go to state 27
+    MINUS           shift and go to state 28
+    TIMES           shift and go to state 29
+    DIVIDE          shift and go to state 30
+    MOD             shift and go to state 31
+    EQEQ            shift and go to state 32
+    NOT_EQUAL       shift and go to state 33
+    LESS            shift and go to state 34
+    LESS_EQUAL      shift and go to state 35
+    GREATER         shift and go to state 36
+    GREATER_EQUAL   shift and go to state 37
+    AND             shift and go to state 38
+    OR              shift and go to state 39
+
+    bin_operators                  shift and go to state 26
+
+state 113
+
+    (29) else_statement -> ELSE LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 115
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    expression                     shift and go to state 4
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 114
+
+    (19) elifs -> elifs ELIF LPAREN expression RPAREN . LBRACE statements RBRACE
+
+    LBRACE          shift and go to state 116
+
+
+state 115
+
+    (29) else_statement -> ELSE LBRACE statements RBRACE .
+
+    LET             reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    VAR             reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    IDENTIFIER      reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    IF              reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    FOR             reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    REPEAT          reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    INT             reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    FLOAT           reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    BOOL            reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    STRING          reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    WHILE           reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    LBRACKET        reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    $end            reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 29 (else_statement -> ELSE LBRACE statements RBRACE .)
+
+
+state 116
+
+    (19) elifs -> elifs ELIF LPAREN expression RPAREN LBRACE . statements RBRACE
+    (1) statements -> . statement
+    (2) statements -> . statements statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 4
+    statements                     shift and go to state 117
+    statement                      shift and go to state 2
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 117
+
+    (19) elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements . RBRACE
+    (2) statements -> statements . statement
+    (24) statement -> . data_declaration
+    (25) statement -> . expression
+    (26) statement -> . if_statement
+    (27) statement -> . for_statement
+    (28) statement -> . while_statement
+    (31) data_declaration -> . LET IDENTIFIER COLON typehint EQUAL expression
+    (32) data_declaration -> . VAR IDENTIFIER COLON typehint EQUAL expression
+    (33) data_declaration -> . IDENTIFIER EQUAL expression
+    (45) expression -> . IDENTIFIER
+    (46) expression -> . basic_types
+    (47) expression -> . comparison_expression
+    (3) if_statement -> . IF LPAREN expression RPAREN LBRACE statements RBRACE elifs else_statement
+    (17) for_statement -> . FOR IDENTIFIER IN for_sequence LBRACE statements RBRACE
+    (40) while_statement -> . while_block LBRACE statements RBRACE
+    (41) while_statement -> . REPEAT LBRACE statements RBRACE while_block
+    (49) basic_types -> . INT
+    (50) basic_types -> . FLOAT
+    (51) basic_types -> . BOOL
+    (52) basic_types -> . STRING
+    (53) basic_types -> . collections
+    (48) comparison_expression -> . expression bin_operators expression
+    (34) while_block -> . WHILE LPAREN expression RPAREN
+    (54) collections -> . LBRACKET collection_contents RBRACKET
+    (55) collections -> . LPAREN collection_contents RPAREN
+
+    RBRACE          shift and go to state 118
+    LET             shift and go to state 8
+    VAR             shift and go to state 10
+    IDENTIFIER      shift and go to state 9
+    IF              shift and go to state 13
+    FOR             shift and go to state 15
+    REPEAT          shift and go to state 17
+    INT             shift and go to state 18
+    FLOAT           shift and go to state 19
+    BOOL            shift and go to state 20
+    STRING          shift and go to state 21
+    WHILE           shift and go to state 23
+    LBRACKET        shift and go to state 24
+    LPAREN          shift and go to state 14
+
+    expression                     shift and go to state 4
+    statement                      shift and go to state 25
+    data_declaration               shift and go to state 3
+    if_statement                   shift and go to state 5
+    for_statement                  shift and go to state 6
+    while_statement                shift and go to state 7
+    basic_types                    shift and go to state 11
+    comparison_expression          shift and go to state 12
+    while_block                    shift and go to state 16
+    collections                    shift and go to state 22
+
+state 118
+
+    (19) elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .
+
+    ELIF            reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    ELSE            reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    LET             reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    VAR             reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    IDENTIFIER      reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    IF              reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    FOR             reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    REPEAT          reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    INT             reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    FLOAT           reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    BOOL            reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    STRING          reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    WHILE           reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    LBRACKET        reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    LPAREN          reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    $end            reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+    RBRACE          reduce using rule 19 (elifs -> elifs ELIF LPAREN expression RPAREN LBRACE statements RBRACE .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 52 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 52 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 52 resolved as shift
+WARNING: shift/reduce conflict for DIVIDE in state 52 resolved as shift
+WARNING: shift/reduce conflict for MOD in state 52 resolved as shift
+WARNING: shift/reduce conflict for EQEQ in state 52 resolved as shift
+WARNING: shift/reduce conflict for NOT_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for LESS in state 52 resolved as shift
+WARNING: shift/reduce conflict for LESS_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for GREATER in state 52 resolved as shift
+WARNING: shift/reduce conflict for GREATER_EQUAL in state 52 resolved as shift
+WARNING: shift/reduce conflict for AND in state 52 resolved as shift
+WARNING: shift/reduce conflict for OR in state 52 resolved as shift
