@@ -2,12 +2,13 @@ token_categories = {
     "parentheses": ["LPAREN", "RPAREN"],
     "braces": ["LBRACE", "RBRACE"],
     "brackets": ["LBRACKET", "RBRACKET"],
-    "punctuations": ["COMMA", "COLON", "SEMICOLON", "DOT"],
+    "punctuations": ["COMMA", "COLON", "DOT", "RARROW"],
     "operators": ["PLUS", "MINUS", "TIMES", "DIVIDE", "MOD"],
     "assignment": ["LET", "VAR", "EQUAL"],
     "types": ["INT_TYPE", "FLOAT_TYPE", "BOOL_TYPE", "STRING_TYPE", "SET_TYPE"],
     "selection_statements": ["IF", "ELSE", "ELIF"],
     "loop_statements": ["FOR", "WHILE", "REPEAT", "IN"],
+    "func_statements": ["FUNC"],
     "comparison_operators": [
         "EQEQ",
         "NOT_EQUAL",
@@ -16,7 +17,7 @@ token_categories = {
         "GREATER",
         "GREATER_EQUAL",
     ],
-    "logical_operators": ["NOT", "AND", "OR"],
+    "logical_operators": ["AND", "OR"],
     "literals": ["IDENTIFIER", "FLOAT", "INT", "BOOL", "STRING"],
 }
 
@@ -25,6 +26,8 @@ tokens = tuple(token for category in token_categories.values() for token in cate
 reserved = {
     "let": "LET",
     "var": "VAR",
+    "func": "FUNC",
+    "return": "RETURN",
     "Int": "INT_TYPE",
     "Float": "FLOAT_TYPE",
     "Set": "SET_TYPE",

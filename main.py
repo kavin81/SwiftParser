@@ -1,47 +1,15 @@
-"""
-__author__ = "Kavin S, M V Chinmay"
-
-"""
+import argparse
 
 from SwiftParser import parse
-
 
 from rich import print
 from rich.pretty import Pretty
 from rich.panel import Panel
 
 
-def main():
-
-    basic_types = """
-    let a : [Int : Float] = [10,10]
-    let b : Int = 10
-    a = "Hello"
-    """
-
-    selection_statement = """
-    if (a > b) {
-        a = 1
-    } else {
-        a = 2
-    }
-    """
-
-    loop_statement = """
-    for i in 10..100 {
-        a = a + 1
-    }
-    while (a < 10) {
-        a = a + 1
-    }
-
-    repeat {
-        a = a + 1
-    } while (a < 10)
-
-    """
-
-    code = basic_types + selection_statement + loop_statement
+def main(file_path):
+    with open(file_path, "r") as file:
+        code = file.read()
 
     parsed_code = parse(code)
     print(
@@ -53,4 +21,18 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+
+    parser = argparse.ArgumentParser(description="Parse Swift code from a file.")
+
+    parser.add_argument(
+        "--file",
+        "-f",
+        type=str,
+        required=False,
+        default="examples/main.swift",
+        help="Path to the file containing the Swift code. (default: examples/main.swift)",
+    )
+
+    args = parser.parse_args()
+
+    main(args.file)

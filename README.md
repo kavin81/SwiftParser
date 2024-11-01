@@ -4,7 +4,7 @@
 a mini project to validate some basic structures of Swift built using PLY
 
 
-## TODO
+## features/structures
 
 - [x] simple data type declaration
   - [x] integer
@@ -28,7 +28,11 @@ a mini project to validate some basic structures of Swift built using PLY
   - [x] for
   - [x] while
 
-- [ ] functions
+- [x] functions declaration
+  - [x] with parameters
+  - [x] without parameters
+  - [x] with return type
+  - [x] without return type
 
 ## Installation
 1. Clone the repository:
@@ -53,7 +57,15 @@ a mini project to validate some basic structures of Swift built using PLY
 ## Usage
 
 ```bash
-python main.py
+>> python main.py --help
+
+usage: script_name.py [-h] [--file FILE | -f FILE]
+
+Parse Swift code from a file.
+
+optional arguments:
+    -h, --help            show this help message and exit
+    --file FILE, -f FILE  Path to the file containing the Swift code. (default: examples/main.swift)
 ```
 
 ## License

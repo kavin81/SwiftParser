@@ -13,8 +13,10 @@ t_RBRACKET = r"\]"
 # punctuations
 t_COMMA = r","
 t_COLON = r":"
-t_SEMICOLON = r";"
+# t_SEMICOLON = r";"
 t_DOT = r"\."
+t_RARROW = r"->"
+# t_LARROW = r"<-"
 # operators
 t_PLUS = r"\+"
 t_MINUS = r"-"
@@ -43,6 +45,9 @@ t_WHILE = r"while"
 t_REPEAT = r"repeat"
 t_IN = r"in"
 
+# functions
+t_FUNC = r"func"
+# t_RETURN = r"return"
 
 # comparison operators
 t_EQEQ = r"=="
@@ -52,7 +57,7 @@ t_LESS_EQUAL = r"<="
 t_GREATER = r">"
 t_GREATER_EQUAL = r">="
 # logical operators
-t_NOT = r"!"
+# t_NOT = r"!"
 t_AND = r"&&"
 t_OR = r"\|\|"
 
@@ -90,6 +95,17 @@ def t_STRING(t):
 def t_newline(t):
     r"\n+"
     t.lexer.lineno += len(t.value)
+
+
+def t_comment(t):
+    r"//.*"
+    pass
+
+
+# multi line comment
+def t_multi_line_comment(t):
+    r"/\*(.|\n)*?\*/"
+    t.lexer.lineno += t.value.count("\n")
 
 
 t_ignore = " \t"
