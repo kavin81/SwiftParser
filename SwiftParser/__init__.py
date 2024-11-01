@@ -1,10 +1,6 @@
 from .lexer import lexer
 from .parser import parser
 
-from rich.console import Console
-from rich.panel import Panel
-from rich.pretty import Pretty
-
 
 def parse(code):
     lexer.input(code)
@@ -16,7 +12,14 @@ def parse(code):
             break
         tokens.append(tok)
 
-    console = Console()
-    console.print(Panel.fit(Pretty(tokens), title="Parsed Tokens"))
+    try:
+        from rich.console import Console
+        from rich.panel import Panel
+        from rich.pretty import Pretty
+
+        console = Console()
+        console.print(Panel.fit(Pretty(tokens), title="Parsed Tokens"))
+    except ImportError:
+        print("Parsed Tokens:\n", tokens)
 
     return parser.parse(code)

@@ -2,22 +2,27 @@ import argparse
 
 from SwiftParser import parse
 
-from rich import print
-from rich.pretty import Pretty
-from rich.panel import Panel
-
 
 def main(file_path):
     with open(file_path, "r") as file:
         code = file.read()
 
     parsed_code = parse(code)
-    print(
-        Panel.fit(
-            Pretty(parsed_code),
-            title="Parsed Code",
-        ),
-    )
+    try:
+        from rich import print
+        from rich.pretty import Pretty
+        from rich.panel import Panel
+
+        panel = (
+            Panel.fit(
+                Pretty(parsed_code),
+                title="Parsed Code",
+            ),
+        )
+    except ImportError:
+        panel = parsed_code
+
+    print(panel)
 
 
 if __name__ == "__main__":
